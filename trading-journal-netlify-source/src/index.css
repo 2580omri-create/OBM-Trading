@@ -384,3 +384,31 @@ input:focus,select:focus,textarea:focus{
   margin-top: 0;                        /* make sure it doesn't steal space */
   padding-top: 8px;
 }
+/* ==== Make nav list fill the sidebar height ==== */
+.sidebar, .SideBar, .app-sidebar{
+  display: flex !important;
+  flex-direction: column;
+  height: 100vh !important;    /* sidebar = full screen height */
+}
+
+/* The nav container (covers multiple possible wrappers) */
+.sidebar .nav-links, .SideBar .nav-links, .app-sidebar .nav-links,
+.sidebar nav, .SideBar nav, .app-sidebar nav,
+.sidebar .links, .SideBar .links, .app-sidebar .links,
+.sidebar .items, .SideBar .items, .app-sidebar .items,
+.sidebar ul, .SideBar ul, .app-sidebar ul{
+  display: flex !important;
+  flex-direction: column;
+  gap: 10px;
+  /* take most of the sidebar height so last item sits near the bottom */
+  flex: 1 1 auto;
+  min-height: 68vh;            /* <- pushes list down even if few items */
+  justify-content: space-between;
+  padding-bottom: 12px;
+}
+
+/* Footer stays pinned to the very bottom */
+.sidebar .footer, .SideBar .footer, .app-sidebar .footer{
+  margin-top: auto !important;   /* stick to bottom */
+  padding-top: 8px;
+}
