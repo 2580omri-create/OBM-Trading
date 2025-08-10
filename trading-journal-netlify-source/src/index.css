@@ -199,3 +199,164 @@ input:focus,select:focus,textarea:focus{
   box-shadow: 0 12px 30px rgba(0,0,0,.35);
   filter: brightness(1.06);
 }
+/* ===========================
+   PRO PURPLE THEME (FULL)
+   Sidebar 100vh + Premium look
+   =========================== */
+
+/* ---- Vars ---- */
+:root{
+  --bg:#20002F;        /* רקע כללי */
+  --bg2:#1A0029;       /* Sidebar כהה יותר */
+  --accent1:#3A0066;   /* סגול עמוק */
+  --accent2:#5E11C4;   /* סגול זוהר */
+  --accent3:#7B2BEF;   /* סגול בהיר יותר */
+  --text:#EDEAF8;      /* טקסט כללי בהיר */
+  --muted:#C8B7EA;     /* טקסט משני */
+  --green:#21D07A;     /* רווח */
+  --red:#FF6B6B;       /* הפסד */
+}
+
+/* ---- Base background ---- */
+html,body,#root{height:100%}
+body{
+  background: radial-gradient(1200px 700px at 20% -10%, #4B0082 0%, #2E003E 60%, var(--bg) 100%) !important;
+  color: var(--text) !important;
+}
+
+/* =========================================
+   SIDEBAR: full height + full-width pills
+   ========================================= */
+.sidebar,.SideBar,.app-sidebar{
+  display:flex !important;
+  flex-direction:column;
+  justify-content:space-between;   /* ניווט למעלה, כפתורים למטה */
+  height:100vh !important;         /* ממלא את כל המסך */
+  padding:12px !important;
+  background: linear-gradient(180deg, var(--bg2), #160022) !important;
+  border-right:1px solid rgba(255,255,255,.10);
+}
+
+/* קבוצת הקישורים העליונה — תופסים עמודה */
+.sidebar .nav-links, .SideBar .nav-links, .app-sidebar .nav-links,
+.sidebar nav, .SideBar nav, .app-sidebar nav,
+.sidebar ul, .SideBar ul, .app-sidebar ul{
+  display:flex; flex-direction:column; gap:10px;
+}
+
+/* קישורים / פריטים בסיידבר — מלא רוחב, "גלולה" */
+.sidebar a,.SideBar a,.app-sidebar a,
+.sidebar .btn,.SideBar .btn,.app-sidebar .btn,
+.sidebar li > a, .SideBar li > a, .app-sidebar li > a{
+  display:flex !important;
+  align-items:center;
+  gap:10px;
+  width:100% !important;
+  padding:12px 16px !important;
+  border-radius:14px !important;
+  text-decoration:none;
+  font-weight:700;
+  background: linear-gradient(135deg, var(--accent1), #5A08B9);
+  color:#FFFFFF !important;
+  border:1px solid rgba(255,255,255,0.14);
+  box-shadow:0 10px 26px rgba(0,0,0,.28);
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+.sidebar a:hover,.SideBar a:hover,.app-sidebar a:hover,
+.sidebar .btn:hover,.SideBar .btn:hover,.app-sidebar .btn:hover{
+  transform:translateX(2px);
+  box-shadow:0 14px 34px rgba(0,0,0,.38);
+  filter:brightness(1.07);
+}
+
+/* Active state (נתפס גם עם aria-current) */
+.sidebar .active, .SideBar .active, .app-sidebar .active,
+.sidebar a[aria-current="page"], .SideBar a[aria-current="page"], .app-sidebar a[aria-current="page"]{
+  background: linear-gradient(135deg, var(--accent2), var(--accent3)) !important;
+  box-shadow: 0 16px 40px rgba(123,43,239,.35);
+  outline: 2px solid rgba(123,43,239,.30);
+}
+
+/* איקונים */
+.sidebar a svg, .SideBar a svg, .app-sidebar a svg{ width:18px; height:18px; opacity:.95 }
+
+/* תחתית הסיידבר (Add / Sign Out) דבוקה למטה */
+.sidebar .footer, .SideBar .footer, .app-sidebar .footer{
+  display:flex; flex-direction:column; gap:10px; padding:8px 0 4px;
+}
+.sidebar .footer .btn, .SideBar .footer .btn, .app-sidebar .footer .btn{ width:100% !important }
+
+/* =========================================
+   CARDS / KPI / BARS — purple-only premium
+   ========================================= */
+.card,.Card,.kpi-card,.stat-card,.panel,.tile{
+  background: linear-gradient(160deg, rgba(108,0,187,0.28), rgba(58,0,102,0.28)) !important;
+  border:1px solid rgba(255,255,255,0.18) !important;
+  backdrop-filter: blur(12px) saturate(125%);
+  -webkit-backdrop-filter: blur(12px) saturate(125%);
+  border-radius:18px !important;
+  box-shadow:0 14px 38px rgba(0,0,0,.35) !important;
+  color:#F8F7FF !important;
+  transition: transform .22s ease, box-shadow .22s ease, filter .22s ease;
+}
+.card:hover,.Card:hover,.kpi-card:hover,.stat-card:hover,.panel:hover,.tile:hover{
+  transform:translateY(-3px);
+  filter:brightness(1.05);
+  box-shadow:0 20px 48px rgba(0,0,0,.45);
+}
+
+/* כותרות ומספרים חדים */
+.card h1,.card h2,.card h3,
+.kpi-card h1,.kpi-card h2,.kpi-card h3,
+.stat-value,.metric-value,.money,.amount{
+  color:#FFFFFF !important;
+  text-shadow:0 2px 12px rgba(0,0,0,.35);
+  font-weight:800;
+}
+.muted,.stat-label,.metric-label{ color:var(--muted) !important }
+
+/* פסי התקדמות/שורות */
+.metric-row,.bar,.progress,.list-row{
+  background: linear-gradient(135deg, rgba(75,0,130,0.25), rgba(58,0,102,0.25)) !important;
+  border:1px solid rgba(255,255,255,0.14) !important;
+  border-radius:14px !important;
+  color:#EEE6FF !important;
+}
+
+/* רווח/הפסד */
+.text-profit,.pnl-positive{ color:var(--green) !important }
+.text-loss,.pnl-negative{   color:var(--red)   !important }
+
+/* כפתורים */
+button,.btn,.primary,.Button{
+  background: linear-gradient(135deg, var(--accent1), var(--accent2)) !important;
+  color:#fff !important;
+  border:1px solid rgba(255,255,255,.18) !important;
+  border-radius:12px !important;
+  padding:.65rem 1rem !important;
+  box-shadow:0 10px 26px rgba(0,0,0,.35);
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+button:hover,.btn:hover,.primary:hover,.Button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 36px rgba(0,0,0,.45);
+  filter:brightness(1.06);
+}
+
+/* קלטים */
+input,select,textarea{
+  background: rgba(130,0,210,0.22) !important;
+  color:#FFF !important;
+  border:1px solid rgba(255,255,255,0.25) !important;
+  border-radius:12px !important;
+}
+input::placeholder,textarea::placeholder{ color:#D5C8F2 }
+input:focus,select:focus,textarea:focus{
+  border-color:#B388FF !important;
+  box-shadow:0 0 0 3px rgba(179,136,255,.25);
+}
+
+/* גלילה נעימה */
+*{ scrollbar-width:thin; scrollbar-color:rgba(255,255,255,.35) transparent }
+*::-webkit-scrollbar{ height:8px; width:8px }
+*::-webkit-scrollbar-thumb{ background:rgba(255,255,255,.35); border-radius:999px }
