@@ -629,3 +629,98 @@ input:focus,select:focus,textarea:focus{
   flex: 0 0 auto !important;                /* שלא יגנוב גובה */
   min-height: 0 !important;
 }
+/* === FORCE SIDEBAR NAV TO REACH THE BOTTOM === */
+
+/* הסיידבר עצמו: עמודה וגובה מלא */
+.sidebar, .SideBar, .app-sidebar {
+  display: flex !important;
+  flex-direction: column;
+  height: 100vh !important;
+}
+
+/* הפוטר תמיד צמוד לתחתית */
+.sidebar .footer, .SideBar .footer, .app-sidebar .footer {
+  margin-top: auto !important;
+  padding-top: 8px;
+}
+
+/* 1) אם התפריט הוא <ul> או <nav> — תן לו למלא כמעט את כל הגובה */
+.sidebar ul, .SideBar ul, .app-sidebar ul,
+.sidebar nav, .SideBar nav, .app-sidebar nav {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: flex-end;                /* דוחף את הפריט האחרון למטה */
+  gap: 10px;
+  min-height: calc(100vh - 200px);          /* אם עדיין יש רווח – הגדל ל-220/240 */
+  padding-bottom: 12px;
+}
+
+/* 2) אם הבלוק של הלינקים הוא הילד הלפני-אחרון (יש לוגו למעלה ופוטר למטה) */
+.sidebar > *:nth-last-child(2),
+.SideBar > *:nth-last-child(2),
+.app-sidebar > *:nth-last-child(2) {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: calc(100vh - 200px);
+}
+
+/* 3) אם יש "מרווח" באמצע שמקבל flex:1 ומרחיק את הרשימה — ננטרל אותו */
+.sidebar .spacer, .SideBar .spacer, .app-sidebar .spacer,
+.sidebar .flex-1, .SideBar .flex-1, .app-sidebar .flex-1 {
+  flex: 0 0 auto !important;                /* שלא יגנוב גובה */
+  min-height: 0 !important;
+}
+/* ===== FORCE ALL "WHITE CARDS" TO PURPLE GRADIENT ===== */
+/* עובד גם על bg-white/bg-gray-50/bg-slate-50 וכו' של Tailwind */
+.bg-white, [class*="bg-white"],
+.bg-gray-50, .bg-slate-50, .bg-neutral-50, .bg-zinc-50,
+div[class*=" bg-white"], div[class^="bg-white"],
+div[class*=" bg-gray-50"], div[class^="bg-gray-50"],
+div[class*=" bg-slate-50"], div[class^="bg-slate-50"],
+[class*="card"], .card, .Card, .kpi-card, .stat-card, .panel, .tile {
+  background: linear-gradient(160deg, rgba(108,0,187,0.28), rgba(58,0,102,0.28)) !important;
+  color: #F8F7FF !important;
+  border: 1px solid rgba(255,255,255,0.18) !important;
+  backdrop-filter: blur(12px) saturate(125%);
+  -webkit-backdrop-filter: blur(12px) saturate(125%);
+  border-radius: 18px !important;
+  box-shadow: 0 14px 38px rgba(0,0,0,.35) !important;
+  transition: transform .22s ease, box-shadow .22s ease, filter .22s ease;
+}
+.bg-white:hover, [class*="bg-white"]:hover,
+.bg-gray-50:hover, .bg-slate-50:hover, .bg-neutral-50:hover, .bg-zinc-50:hover,
+[class*="card"]:hover, .card:hover, .Card:hover, .kpi-card:hover, .stat-card:hover, .panel:hover, .tile:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.05);
+  box-shadow: 0 20px 48px rgba(0,0,0,.45);
+}
+
+/* טקסטים ומספרים בתוך הכרטיסים – שיהיו בהירים וקריאים */
+.bg-white h1, .bg-white h2, .bg-white h3,
+[class*="bg-white"] h1, [class*="bg-white"] h2, [class*="bg-white"] h3,
+.bg-gray-50 h1, .bg-gray-50 h2, .bg-gray-50 h3,
+[class*="card"] h1, [class*="card"] h2, [class*="card"] h3,
+.stat-value, .metric-value, .money, .amount {
+  color: #FFFFFF !important;
+  font-weight: 800;
+  text-shadow: 0 2px 12px rgba(0,0,0,.35);
+}
+
+/* תוויות/טקסט משני על הכרטיסים */
+.bg-white .muted, [class*="bg-white"] .muted,
+.bg-gray-50 .muted, [class*="card"] .muted,
+.stat-label, .metric-label {
+  color: #C8B7EA !important;
+}
+
+/* רווח/הפסד נשארים ברורים */
+.text-profit, .pnl-positive { color: #21D07A !important; }
+.text-loss,   .pnl-negative { color: #FF6B6B !important; }
+
+/* רקע עמוד סגול פרימיום (אם עדיין לא הוחל) */
+body {
+  background: radial-gradient(1200px 700px at 20% -10%, #4B0082 0%, #2E003E 60%, #20002F 100%) !important;
+  color: #EDEAF8 !important;
+}
