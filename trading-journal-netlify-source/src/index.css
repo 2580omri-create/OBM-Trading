@@ -412,3 +412,45 @@ input:focus,select:focus,textarea:focus{
   margin-top: auto !important;   /* stick to bottom */
   padding-top: 8px;
 }
+/* Sidebar = full screen height */
+.sidebar, .SideBar, .app-sidebar {
+  display: flex !important;
+  flex-direction: column;
+  height: 100vh !important;
+}
+
+/* תפריט כ-<ul> */
+.sidebar ul, .SideBar ul, .app-sidebar ul {
+  display: flex !important;
+  flex-direction: column;
+  min-height: calc(100vh - 180px); /* שנה 180 כדי להתאים לגובה */
+  justify-content: flex-end;
+  gap: 10px;
+  padding-bottom: 12px;
+}
+
+/* תפריט כ-<nav> */
+.sidebar nav, .SideBar nav, .app-sidebar nav {
+  display: flex !important;
+  flex-direction: column;
+  min-height: calc(100vh - 180px);
+  justify-content: flex-end;
+  gap: 10px;
+  padding-bottom: 12px;
+}
+
+/* אם זה בלוק אחר שמכיל את הפריטים */
+.sidebar > :not(.footer):last-of-type,
+.SideBar > :not(.footer):last-of-type,
+.app-sidebar > :not(.footer):last-of-type {
+  display: flex !important;
+  flex-direction: column;
+  min-height: calc(100vh - 180px);
+  justify-content: flex-end;
+}
+
+/* Footer צמוד למטה */
+.sidebar .footer, .SideBar .footer, .app-sidebar .footer {
+  margin-top: auto !important;
+  padding-top: 8px;
+}
