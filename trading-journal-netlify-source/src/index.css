@@ -175,3 +175,27 @@ input:focus,select:focus,textarea:focus{
 *{ scrollbar-width:thin; scrollbar-color:rgba(255,255,255,.35) transparent; }
 *::-webkit-scrollbar{ height:8px; width:8px; }
 *::-webkit-scrollbar-thumb{ background:rgba(255,255,255,.35); border-radius:999px; }
+/* === Sidebar: full-width pills === */
+.sidebar, .SideBar, .app-sidebar { padding: 10px !important; }
+
+.sidebar a, .SideBar a, .app-sidebar a, .nav-link {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  width: 100% !important;
+  padding: 12px 14px !important;
+  border-radius: 14px !important;
+  text-decoration: none;
+  font-weight: 600;
+  /* pill look */
+  background: linear-gradient(135deg, #3A0066, #4B0082);
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+.sidebar a:hover, .SideBar a:hover, .app-sidebar a:hover, .nav-link:hover {
+  transform: translateX(2px);
+  box-shadow: 0 12px 30px rgba(0,0,0,.35);
+  filter: brightness(1.06);
+}
