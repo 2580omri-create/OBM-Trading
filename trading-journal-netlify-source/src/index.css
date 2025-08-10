@@ -360,3 +360,27 @@ input:focus,select:focus,textarea:focus{
 *{ scrollbar-width:thin; scrollbar-color:rgba(255,255,255,.35) transparent }
 *::-webkit-scrollbar{ height:8px; width:8px }
 *::-webkit-scrollbar-thumb{ background:rgba(255,255,255,.35); border-radius:999px }
+/* Fill the sidebar vertically so nav reaches almost the bottom */
+.sidebar, .SideBar, .app-sidebar{
+  display: flex !important;
+  flex-direction: column;
+  height: 100vh !important;           /* full height */
+}
+
+/* This is the container that holds the nav items — use the one that matches אצלך */
+.sidebar .nav-links, .SideBar .nav-links, .app-sidebar .nav-links,
+.sidebar nav, .SideBar nav, .app-sidebar nav,
+.sidebar ul, .SideBar ul, .app-sidebar ul{
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;                      /* take remaining height */
+  justify-content: space-between;      /* spread items from top to almost bottom */
+  gap: 10px;                           /* keep nice spacing between items */
+  padding-bottom: 12px;                /* tiny buffer above footer */
+}
+
+/* Footer stays pinned at true bottom */
+.sidebar .footer, .SideBar .footer, .app-sidebar .footer{
+  margin-top: 0;                        /* make sure it doesn't steal space */
+  padding-top: 8px;
+}
