@@ -586,3 +586,46 @@ input:focus,select:focus,textarea:focus{
 *{ scrollbar-width:thin; scrollbar-color:rgba(255,255,255,.35) transparent }
 *::-webkit-scrollbar{ height:8px; width:8px }
 *::-webkit-scrollbar-thumb{ background:rgba(255,255,255,.35); border-radius:999px }
+/* === FORCE SIDEBAR NAV TO REACH THE BOTTOM === */
+
+/* הסיידבר עצמו: עמודה וגובה מלא */
+.sidebar, .SideBar, .app-sidebar {
+  display: flex !important;
+  flex-direction: column;
+  height: 100vh !important;
+}
+
+/* הפוטר תמיד צמוד לתחתית */
+.sidebar .footer, .SideBar .footer, .app-sidebar .footer {
+  margin-top: auto !important;
+  padding-top: 8px;
+}
+
+/* 1) אם התפריט הוא <ul> או <nav> — תן לו למלא כמעט את כל הגובה */
+.sidebar ul, .SideBar ul, .app-sidebar ul,
+.sidebar nav, .SideBar nav, .app-sidebar nav {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: flex-end;                /* דוחף את הפריט האחרון למטה */
+  gap: 10px;
+  min-height: calc(100vh - 200px);          /* אם עדיין יש רווח – הגדל ל-220/240 */
+  padding-bottom: 12px;
+}
+
+/* 2) אם הבלוק של הלינקים הוא הילד הלפני-אחרון (יש לוגו למעלה ופוטר למטה) */
+.sidebar > *:nth-last-child(2),
+.SideBar > *:nth-last-child(2),
+.app-sidebar > *:nth-last-child(2) {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: calc(100vh - 200px);
+}
+
+/* 3) אם יש "מרווח" באמצע שמקבל flex:1 ומרחיק את הרשימה — ננטרל אותו */
+.sidebar .spacer, .SideBar .spacer, .app-sidebar .spacer,
+.sidebar .flex-1, .SideBar .flex-1, .app-sidebar .flex-1 {
+  flex: 0 0 auto !important;                /* שלא יגנוב גובה */
+  min-height: 0 !important;
+}
